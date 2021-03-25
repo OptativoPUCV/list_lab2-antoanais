@@ -1,0 +1,42 @@
+Thu Mar 25 01:06:38 UTC 2021: 
+ list.c | 3 +++
+ 1 file changed, 3 insertions(+)
+In file included from test.c:5:0:
+list.c: In function ‘createList’:
+list.c:33:9: error: ‘List {aka struct List}’ has no member named ‘next’
+   lista -> next = NULL;
+         ^~
+list.c:34:9: error: ‘List {aka struct List}’ has no member named ‘prev’
+   lista -> prev = NULL;
+         ^~
+Compilation failed
+Thu Mar 25 01:06:50 UTC 2021: 
+ list.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+In file included from test.c:5:0:
+list.c: In function ‘createList’:
+list.c:33:9: error: ‘List {aka struct List}’ has no member named ‘next’
+   lista -> next = NULL;
+         ^~
+list.c:34:9: error: ‘List {aka struct List}’ has no member named ‘prev’
+   lista -> prev = NULL;
+         ^~
+Compilation failed
+Thu Mar 25 01:06:54 UTC 2021: 
+ list.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+In file included from test.c:5:0:
+list.c: In function ‘createList’:
+list.c:33:9: error: ‘List {aka struct List}’ has no member named ‘next’
+   lista -> next = NULL;
+         ^~
+list.c:34:9: error: ‘List {aka struct List}’ has no member named ‘prev’
+   lista -> prev = NULL;
+         ^~
+Compilation failed
+Thu Mar 25 01:07:32 UTC 2021: 
+ list.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+ tests:  1|5
+total_score: 10/70
+a6fbff6
