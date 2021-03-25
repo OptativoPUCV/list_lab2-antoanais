@@ -115,3 +115,9 @@ Thu Mar 25 01:34:04 UTC 2021:
  tests:  9|3
 total_score: 35/70
 80a31a9
+Thu Mar 25 01:46:53 UTC 2021: 
+ list.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+ tests:  9|3
+total_score: 35/70
+c9fc1b6
