@@ -68,7 +68,7 @@ void pushFront(List * list, const void * data) {
     datoNuevo = createNode(data);
     list->head->prev = datoNuevo;
     list->head = datoNuevo;
-    datoNuevo->prev = NULL;
+    list->head->prev = NULL;
   };
 
 }
