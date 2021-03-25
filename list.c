@@ -45,11 +45,11 @@ void * nextList(List * list) {
   if ((list -> current) == NULL) return NULL;
   if((list->current->next) == NULL) return NULL ;
   list->current = list->current->next;
-    return (void*)(list->current->data);
+  return (void*)(list->current->data);
 }
 
 void * lastList(List * list) {
-  if ((list -> head) == NULL) return NULL;
+  //if ((list -> head) == NULL) return NULL;
   if ((list -> tail) == NULL) return NULL;
   list->current = list->tail;
   return (void*) (list -> tail -> data);
