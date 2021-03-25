@@ -87,6 +87,38 @@ void pushBack(List * list, const void * data) {
 }
 
 void pushCurrent(List * list, const void * data) {
+  Node *datoNuevo;
+  datoNuevo = createNode(data);
+  if(list->current == list->tail){
+    list->current->next = datoNuevo;
+    datoNuevo->prev = list->current;
+  }else if(list->current == list->head){
+    list->current->prev = datoNuevo;
+    datoNuevo->next = list->current;
+  }else{
+    /*Node *puntero = list->head;
+    int posicion = 0;
+    while(puntero != list->current){
+      puntero = puntero->next;
+      posicion++;
+    }
+    int posicion_1 = 0;
+    puntero = list->head;
+     Node *puntero_1;
+    while(puntero != list -> tail){
+      puntero = puntero->next;
+      posicion_1++;
+      if(posicion_1 == posicion + 1){
+        puntero_1 = puntero;
+        puntero = datoNuevo;
+
+      }
+      if(posicion_1 > posicion+1){
+        puntero = puntero_1;
+        
+      }
+    }*/
+  }
 }
 
 void * popFront(List * list) {
