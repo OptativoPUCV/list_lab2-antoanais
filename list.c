@@ -134,7 +134,7 @@ void * popBack(List * list) {
 void * popCurrent(List * list) {
   Node *guardarDato = NULL;
   if(list->head != NULL){
-    guardarDato = list -> head;
+    guardarDato = list -> head->prev;
     list -> current = list -> head -> next;
     list -> current -> prev = NULL;
     list-> head = list -> current;
@@ -144,6 +144,6 @@ void * popCurrent(List * list) {
 
 void cleanList(List * list) {
     while (list->head != NULL) {
-        popFront(list);
+      popFront(list);
     }
 }
