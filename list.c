@@ -31,6 +31,7 @@ Node * createNode(const void * data) {
 List * createList() {
   List *lista = (List*)malloc(sizeof(List));
   lista -> head = NULL;
+  lista->current = NULL;
   lista -> tail = NULL;
   return lista;
 }
@@ -115,15 +116,15 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-  if(list->head != NULL){
+  if(list->current == list->head){
+    list->head = list->current->next;
+  }else if(list->current == list->tail){
+    list->tail = list->current->prev;
+  }else{
     list->current = list->head;
-    Node *guardarPrimero = list->head;
-    Node *despuesPrimeroNuevo = list->head->next->next;
-    list->current = list->head->next;
-    list->head->next = list->current;
-    list->current->next = despuesPrimeroNuevo;
-    list->current->prev = NULL;
-    list->head = list->current;
+    Node *guardarPrimero = list->current;
+    list->current->prev->next = list->current->next;
+    list->current->next->prev = list->current->prev;
     return (void*)(guardarPrimero->data);
   }
   return NULL;
