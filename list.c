@@ -132,7 +132,11 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-    return NULL;
+  if(list->tail != NULL){
+    list -> current = list -> tail -> prev;
+    list -> current -> next = NULL;
+  }
+  return (void*) list;
 }
 
 void cleanList(List * list) {
