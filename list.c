@@ -101,7 +101,6 @@ void pushCurrent(List * list, const void * data) {
     datoNuevo->next = list->current->next; 
     list->current->next->prev = datoNuevo;
     list->current->next = datoNuevo; 
-
   }
 }
 
@@ -116,14 +115,17 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-  Node *guardarDato = NULL;
   if(list->head != NULL){
-    guardarDato = list -> head;
-    list -> current = list -> head -> next;
-    list -> current -> prev = NULL;
-    list-> head = list -> current;
+    Node *guardarPrimero = list->head;
+    Node *despuesPrimeroNuevo = list->head->next->next;
+    list->current = list->head->next;
+    list->head->next = list->current;
+    list->current->next = despuesPrimeroNuevo;
+    list->current->prev = NULL;
+    list->head = list->current;
+    return (void*)(guardarPrimero->data);
   }
-  return (void*) guardarDato->data;
+  return NULL;
 }
 
 void cleanList(List * list) {
