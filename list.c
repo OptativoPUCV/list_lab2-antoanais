@@ -134,7 +134,7 @@ void * popBack(List * list) {
 void * popCurrent(List * list) {
   Node *guardarDato = NULL;
   if(list->head != NULL){
-    guardarDato = list -> head->prev;
+    guardarDato = list -> head;
     list -> current = list -> head -> next;
     list -> current -> prev = NULL;
     list-> head = list -> current;
