@@ -139,7 +139,7 @@ void * popCurrent(List * list) {
     list -> current -> prev = NULL;
     list-> head = list -> current;
   }
-  return (void*) guardarDato;
+  return (void*) guardarDato->data;
 }
 
 void cleanList(List * list) {
