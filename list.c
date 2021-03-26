@@ -116,6 +116,7 @@ void * popBack(List * list) {
 
 void * popCurrent(List * list) {
   if(list->head != NULL){
+    list->current = list->head;
     Node *guardarPrimero = list->head;
     Node *despuesPrimeroNuevo = list->head->next->next;
     list->current = list->head->next;
