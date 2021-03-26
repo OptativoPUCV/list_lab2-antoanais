@@ -132,7 +132,7 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-  Node *guardarDato;
+  Node *guardarDato = NULL;
   if(list->head != NULL){
     guardarDato = list -> head;
     list -> current = list -> head -> next;
