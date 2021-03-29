@@ -67,9 +67,7 @@ void pushFront(List * list, const void * data) {
   Node *datoNuevo;
   datoNuevo = createNode(data);
   datoNuevo-> next = list->head;
-
   if ((list -> head) != NULL){
-
     list->head->prev = datoNuevo;
     list->head = list->head->prev;
     list->head->prev = NULL;
@@ -116,7 +114,7 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-  Node *guardarPrimero = list->current;
+  Node *guardarUltimo = list->current;
   if(list->current == list->head){
     list->head = list->current->next;
     list->head->prev = NULL;
@@ -129,11 +127,11 @@ void * popCurrent(List * list) {
     list->current->next->prev = list->current->prev;
     
   }
-  return (void*)(guardarPrimero->data);
+  return (void*)(guardarUltimo->data);
 }
 
 void cleanList(List * list) {
-    while (list->head != NULL) {
-      popFront(list);
-    }
+  while (list->head != NULL) {
+    popFront(list);
+  }
 }
