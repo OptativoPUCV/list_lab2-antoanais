@@ -151,15 +151,21 @@ void * popCurrent(List * list) {
   Se crea un puntero a void para guardar el dato que se encuentra en el current, para luego poder liberar la memoria del nodo
 */
   void *paraRetornar = (void*) guardarCurrent->data;
-
+/* 
+  En caso de que el current sea el primer elemento de la lista, le asignaremos al primer nodo el nodo siguiente del current
+*/
   if(list->current == list->head){
     list->head = list->current->next;
     list->head->prev = NULL;
-
+/*
+  En caso de que el current sea el último elemento de la lista, le asignaremos al último nodo el nodo previo del current
+*/
   }else if(list->current == list->tail){
     list->tail = list->current->prev;
     list->tail->next = NULL;
-
+/*
+  En caso de que el current esté en cualquier otro lugar de la lista, entre dos nodos, se realiza el proceso para que los nodos de los extremos del current se apunten entre ellos
+*/ 
   }else{
   
     list->current->prev->next = list->current->next;
