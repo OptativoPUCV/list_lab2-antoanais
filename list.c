@@ -127,6 +127,7 @@ void * popCurrent(List * list) {
     list->current->next->prev = list->current->prev;
     
   }
+  free(guardarUltimo);
   return (void*)(guardarUltimo->data);
 }
 
