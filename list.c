@@ -109,14 +109,24 @@ void pushBack(List * list, const void * data) {
 void pushCurrent(List * list, const void * data){
   Node *datoNuevo;
   datoNuevo = createNode(data);
-  if(list->head == NULL){
+  if(list->current == NULL){
+/* 
+  Si el current no existe, se le asigna al primer nodo y al último el nuevo dato, así mismo al current
+*/
     list->head = datoNuevo;
     list->current = datoNuevo;
     list->tail = datoNuevo;
+
+/*
+  En caso de que el current sea el último dato de la lista, le asignamos el nuevo dato al siguiente del current, para dejarlo como el último dato
+*/
   }else if(list->current == list->tail){
     list->current->next = datoNuevo;
     datoNuevo->prev = list->current; 
     list -> tail = datoNuevo;
+/*
+  Si el current está en cualquier otro lado de la lista, se inserta el dato nuevo entre el current y el siguiente de este
+*/
   }else{
     datoNuevo->prev = list-> current;
     datoNuevo->next = list->current->next; 
@@ -136,8 +146,11 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-  Node *guardarUltimo = list->current;
-  void *paraRetornar = (void*) guardarUltimo->data;
+  Node *guardarCurrent = list->current;
+/*
+  Se crea un puntero a void para guardar el dato que se encuentra en el current, para luego poder liberar la memoria del nodo
+*/
+  void *paraRetornar = (void*) guardarCurrent->data;
 
   if(list->current == list->head){
     list->head = list->current->next;
@@ -153,7 +166,7 @@ void * popCurrent(List * list) {
     list->current->next->prev = list->current->prev;
     
   }
-  free(guardarUltimo);
+  free(guardarCurrent);
   return paraRetornar;
 }
 
