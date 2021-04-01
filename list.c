@@ -39,26 +39,38 @@ List * createList() {
 void * firstList(List * list) {
   if ((list -> head) == NULL) return NULL;
   list->current = list->head;
-  return (void*) (list -> head -> data);
+/*  
+  Es retornado el dato del primer nodo en la lista
+*/
+  return (void*) (list->head->data);
 }
 
 void * nextList(List * list) {
   if ((list -> current) == NULL) return NULL;
   if((list->current->next) == NULL) return NULL ;
+/*
+  El nuevo current es el dato siguiente al current
+  anterior 
+*/
   list->current = list->current->next;
   return (void*)(list->current->data);
 }
 
 void * lastList(List * list) {
-  //if ((list -> head) == NULL) return NULL;
+
   if ((list -> tail) == NULL) return NULL;
   list->current = list->tail;
+  /*Retornamos el último dato de la lista*/
   return (void*) (list -> tail -> data);
 }
 
 void * prevList(List * list) {
   if ((list -> current) == NULL) return NULL;
-  if((list->current->prev) == NULL) return NULL ;
+  if ((list->current->prev) == NULL) return NULL;
+/*
+  El nuevo current es el dato previo al current
+  anterior
+*/
   list->current = list->current->prev;
   return (void*)(list->current->data);
 }
@@ -66,13 +78,22 @@ void * prevList(List * list) {
 void pushFront(List * list, const void * data) {
   Node *datoNuevo;
   datoNuevo = createNode(data);
+/*
+  Al dato siguiente del nuevo nodo, le damos el valor del primer elemento de la lista
+*/
   datoNuevo-> next = list->head;
   if ((list -> head) != NULL){
+/*
+  Al dato anterior al primero le damos el valor del nuevo dato, y al primero de la lista le asignamos el nuevo dato para luego decir que el anterior a este será nulo
+*/
     list->head->prev = datoNuevo;
     list->head = list->head->prev;
     list->head->prev = NULL;
     list->current = datoNuevo;
   }else{
+/*
+  Si el primer dato de la lista no existe, se le asigna al primer nodo y al último el dato nuevo
+*/
     list->head = datoNuevo;
     list->current = datoNuevo;
     list->tail = datoNuevo;
@@ -85,11 +106,12 @@ void pushBack(List * list, const void * data) {
     pushCurrent(list,data);
 }
 
-void pushCurrent(List * list, const void * data) {
+void pushCurrent(List * list, const void * data){
   Node *datoNuevo;
   datoNuevo = createNode(data);
   if(list->current == NULL){
     list->head = datoNuevo;
+    list->current = datoNuevo;
     list->tail = datoNuevo;
   }else if(list->current == list->tail){
     list->current->next = datoNuevo;
@@ -116,12 +138,15 @@ void * popBack(List * list) {
 void * popCurrent(List * list) {
   Node *guardarUltimo = list->current;
   void *paraRetornar = (void*) guardarUltimo->data;
+
   if(list->current == list->head){
     list->head = list->current->next;
     list->head->prev = NULL;
+
   }else if(list->current == list->tail){
     list->tail = list->current->prev;
     list->tail->next = NULL;
+
   }else{
   
     list->current->prev->next = list->current->next;
