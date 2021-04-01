@@ -109,7 +109,7 @@ void pushBack(List * list, const void * data) {
 void pushCurrent(List * list, const void * data){
   Node *datoNuevo;
   datoNuevo = createNode(data);
-  if(list->current == NULL){
+  if(list->head == NULL){
     list->head = datoNuevo;
     list->current = datoNuevo;
     list->tail = datoNuevo;
